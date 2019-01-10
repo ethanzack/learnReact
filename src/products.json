@@ -236,6 +236,20 @@
       "currencyId": "USD",
       "currencyFormat": "$",
       "isFreeShipping": true
+    },
+
+    {
+      "id": 10,
+      "sku": 27250082398145995,
+      "title": "On The Streets Black T-Shirt",
+      "description": "",
+      "availableSizes": ["L", "XL"],
+      "style": "",
+      "price": 49.0,
+      "installments": 9,
+      "currencyId": "USD",
+      "currencyFormat": "$",
+      "isFreeShipping": true
     }
   ]
 }

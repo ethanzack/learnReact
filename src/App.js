@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import data from './products.json'
-import Products from './Components/Products.js'
+import ProductTable from './Components/ProductTable.js'
 
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <Products products = {data.products} />
+      <div style = {{backgroundColor: 'gray'}}>
+        <ProductTable products = {data.products} />
       </div>
     );
   }
