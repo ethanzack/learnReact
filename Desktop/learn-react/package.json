@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.2.1",
+    "firebase-tools": "^6.4.0",
     "jquery": "^1.9.1",
     "popper.js": "^1.14.6",
     "react": "^16.7.0",
