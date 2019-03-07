@@ -29,7 +29,7 @@ class ProductTable extends Component {
       <Container>
       <Row>
         {this.props.products.map(function(prod, i){
-          return <Col><Product prod = {prod}
+          return <Col key = {i}><Product prod = {prod}
                                cartFunc = {() => cartAdd(prod)}
                                cartShirts = {state.cartList}/>
                  </Col>
