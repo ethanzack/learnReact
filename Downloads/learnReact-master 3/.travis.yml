@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+  - node_modules
+script:
+  - npm test
+  - npm run build
+deploy:
+  provider: firebase
+  token:
+    secure: 1/1B4M0a3WcdOtJPJ-UlaCYlsyubFze_tpWiq_JVlKBcE
