@@ -19,6 +19,7 @@ class Product extends Component {
      this.setState({
        modal: !this.state.modal
      });
+     this.props.add(this.props.prod.title)
    }
 
 
@@ -27,6 +28,20 @@ class Product extends Component {
       <div style = {containerStyle}>
             <h4> {this.props.prod.title} </h4>
             <h6> {this.props.prod.currencyFormat}{this.props.prod.price}</h6>
+            <div style = {{marginLeft: '20px'}}><Row>
+            <h6> Available Sizes:   </h6>
+            {this.props.prod.availableSizes.map((size, i) =>
+              {
+                if(i !== this.props.prod.availableSizes.length -1){
+                return <h6> {size}, </h6>
+                }
+                else{
+                  return <h6> {size} </h6>
+                }
+            },this
+            )}
+            </Row>
+            </div>
             <Button outline color="primary" style = {{textAlign: 'bottom'}} onClick={this.toggle}> Add to Cart </Button>
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalHeader toggle={this.toggle}>Success</ModalHeader>

@@ -12,12 +12,17 @@ class Cart extends Component {
      };
 
      this.toggle = this.toggle.bind(this);
+     this.removeFromCart = this.removeFromCart.bind(this);
    }
 
    toggle() {
      this.setState({
        modal: !this.state.modal
      });
+   }
+
+   removeFromCart(prod) {
+     this.props.removeItem(prod)
    }
 
 
@@ -28,11 +33,17 @@ class Cart extends Component {
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
             <ModalHeader toggle={this.toggle}>MY CART</ModalHeader>
               <ModalBody>
-                Cart Items
+                {this.props.cartProds.map((prod,i) =>
+                  <Row key={i}>
+                    <h5> {prod} </h5>
+                    <Button style = {{marginLeft: '30px'}} color="danger" onClick={() => this.removeFromCart(prod)}>Remove Item</Button>
+                  </Row>
+                )}
               </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>Check Out</Button>{' '}
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            <Button color="danger" onClick={this.props.clear}>Clear Cart</Button>
           </ModalFooter>
         </Modal>
       </div>
