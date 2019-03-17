@@ -26,7 +26,8 @@ class Cart extends Component {
    }
 
 
-  render() {
+  render(
+  ) {
     return (
       <div style = {cartStyle}>
         <Button color = "success" onClick={this.toggle} style = {{width: '100%'}}> View My Cart </Button>
@@ -35,7 +36,8 @@ class Cart extends Component {
               <ModalBody>
                 {this.props.cartProds.map((prod,i) =>
                   <Row key={i}>
-                    <h5> {prod} </h5>
+                    <h5> {prod[0]} </h5>
+                    <div style = {{marginLeft: '10px'}}><strong>size: {prod[1]}</strong></div>
                     <Button style = {{marginLeft: '30px'}} color="danger" onClick={() => this.removeFromCart(prod)}>Remove Item</Button>
                   </Row>
                 )}

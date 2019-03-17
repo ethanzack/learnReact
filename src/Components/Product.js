@@ -9,17 +9,43 @@ class Product extends Component {
      super(props);
      this.state = {
        modal: false,
-       addedToCart: false
+       addedToCart: false,
+       colors: {"XS": "secondary", "S": "secondary", "M": "secondary", "L": "secondary", "XL": "secondary"}
      };
 
      this.toggle = this.toggle.bind(this);
    }
 
    toggle() {
-     this.setState({
+     let selectedSizes = []
+     for(var key in this.state.colors){
+       if(this.state.colors[key] == "primary"){
+         selectedSizes.push(key)
+       }
+     }
+     console.log(selectedSizes)
+
+     if(selectedSizes.length != 0){
+       this.setState({
        modal: !this.state.modal
      });
-     this.props.add(this.props.prod.title)
+     this.props.add(this.props.prod.title, selectedSizes)
+    }
+   }
+
+   selectFilter(color){
+     let newDict = this.state.colors
+     if(newDict[color] == "secondary"){newDict[color] = "primary";}
+     else{newDict[color] = "secondary"}
+     let selectedSizes = []
+     let newArray = []
+     for(var key in this.state.colors){
+       if(this.state.colors[key] == "primary"){
+         selectedSizes.push(key)
+       }
+     }
+     this.setState({colors: newDict})
+
    }
 
 
@@ -31,15 +57,11 @@ class Product extends Component {
             <div style = {{marginLeft: '20px'}}><Row>
             <h6> Available Sizes:   </h6>
             {this.props.prod.availableSizes.map((size, i) =>
-              {
-                if(i !== this.props.prod.availableSizes.length -1){
-                return <h6> {size}, </h6>
-                }
-                else{
-                  return <h6> {size} </h6>
-                }
-            },this
-            )}
+              <Button onClick={() => this.selectFilter(size)} color = {this.state.colors[size]}>
+                  <h6> {size} </h6>
+              </Button>)
+
+            }
             </Row>
             </div>
             <Button outline color="primary" style = {{textAlign: 'bottom'}} onClick={this.toggle}> Add to Cart </Button>

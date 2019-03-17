@@ -21,10 +21,20 @@ class ProductTable extends Component {
      this.selectFilter = this.selectFilter.bind(this);
    }
 
-   addToCart(product) {
-     if(!this.state.productsInCart.includes(product)){
-     this.setState({productsInCart: [...this.state.productsInCart, product]})
-    }
+   addToCart(product,sizes) {
+     let newArray = []
+     for(let i = 0; i < this.state.productsInCart.length; i++){
+       if(!newArray.includes(this.state.productsInCart[i])){
+         newArray.push(this.state.productsInCart[i])
+       }
+     }
+
+     if(!newArray.includes([product,sizes])){
+       newArray.push([product,sizes])
+     }
+
+     this.setState({productsInCart: newArray})
+      console.log(this.state.productsInCart)
    }
 
    clearCart() {
